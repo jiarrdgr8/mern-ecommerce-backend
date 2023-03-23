@@ -1,11 +1,14 @@
 import app from './app.js'
 import dotenv from 'dotenv';
+import { connectDB } from './db/Database.js';
+
 
 //handling uncaught Exception
 process.on('uncaughtException', (err)=>{
     console.log(`Error: ${err.message}`);
     console.log(`shutding down the server for handling uncaught exception`);
 })
+
 
 //config
 if(process.env.NODE_ENV !== 'PRODUCTION'){
@@ -14,8 +17,12 @@ if(process.env.NODE_ENV !== 'PRODUCTION'){
     })
 }
 
-//create server
 
+//connecting to database
+connectDB()
+
+
+//create server
 const server = app.listen(process.env.PORT, () => {
     console.log('Server running at port', process.env.PORT);
 })
