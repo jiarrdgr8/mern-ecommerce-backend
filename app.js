@@ -9,10 +9,6 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }));
 
-
-
-
-
 //config
 if(process.env.NODE_ENV !== 'PRODUCTION'){
     dotenv.config({
